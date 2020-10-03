@@ -3,23 +3,34 @@ import {
 } from "./getMovies.js"
 
 
-getMovies("popular", "en")
+getMovies("top_rated", "en")
 
-let $dropdown = document.querySelector(".dropdown")
-let $language = document.querySelector(".language")
+// this will fetch top-rated/popular/upcoming movies of selected languages as per user
+document.querySelector(".languages").addEventListener("change", () => getMovies(document.querySelector(".select").innerHTML.toLowerCase(), document.querySelector(".languages").value))
 
-$dropdown.addEventListener("mouseover", () => {
-    $language.style.display = ($dropdown.classList[1] == "fa-caret-down") ? "block" : "none"
-    $dropdown.classList = ($dropdown.classList[1] == "fa-caret-down") ? "fa fa-caret-up dropdown" : "fa fa-caret-down dropdown"
+//when home is clicked it will fetch top_rated movies and will show on ui
+document.querySelector(".home").addEventListener("click", () => {
+    document.querySelector(".popular").classList = "popular"
+    document.querySelector(".upcoming").classList = "upcoming"
+    document.querySelector(".home").classList = "home select"
 
+    getMovies("top_rated", document.querySelector(".languages").value)
 })
 
+//when popular is clicked it will fetch top_rated movies and will show on ui
+document.querySelector(".popular").addEventListener("click", () => {
+    document.querySelector(".popular").classList = "popular select"
+    document.querySelector(".upcoming").classList = "upcoming"
+    document.querySelector(".home").classList = "home"
 
-// document.querySelector(".eng").addEventListener("click", () => 
-// document.querySelector(".telugu").addEventListener("click", () => 
-// document.querySelector(".tamil").addEventListener("click", () => 
-// document.querySelector(".kannada").addEventListener("click", () =>
-// document.querySelector(".malayam").addEventListener("click", () => 
-// document.querySelector(".home").addEventListener("click", () => 
-// document.querySelector(".popular").addEventListener("click", () => 
-// document.querySelector(".upcoming").addEventListener("click", () => 
+    getMovies("popular", document.querySelector(".languages").value)
+})
+
+//when upcoming is clicked it will fetch top_rated movies and will show on ui
+document.querySelector(".upcoming").addEventListener("click", () => {
+    document.querySelector(".popular").classList = "popular"
+    document.querySelector(".upcoming").classList = "upcoming select"
+    document.querySelector(".home").classList = "home"
+
+    getMovies("upcoming", document.querySelector(".languages").value)
+})
