@@ -7,6 +7,8 @@ function render(movies) {
     movies = [{movie},{movie}]
     */
 
+    movies.sort((a, b) => b.vote_count - a.vote_count)
+
     let $section = document.querySelector("#movie-list")
     $section.innerHTML = ""
 
@@ -18,7 +20,7 @@ function render(movies) {
 
         // movie title
         let $h2 = document.createElement("h2")
-        $h2.appendChild(document.createTextNode(movie.title))
+        $h2.appendChild(document.createTextNode(movie.original_title))
         $div.appendChild($h2)
 
         // movie release date
@@ -29,8 +31,14 @@ function render(movies) {
         // movie image
         let $img = document.createElement("img")
 
-        let imageUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-        $img.setAttribute("src", imageUrl)
+        let path = movie.poster_path == null ? movie.border_path : movie.poster_path
+        let imageUrl = null;
+        if (path) {
+            imageUrl = `https://image.tmdb.org/t/p/w500/${path}`
+            $img.setAttribute("src", imageUrl)
+        }
+
+
         $img.setAttribute("alt", `${movie.title} Image`)
         $div.appendChild($img)
 

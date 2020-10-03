@@ -6,6 +6,19 @@ import {
 var apiKey = "92a26a0f3494c37de0d782903df76c79"
 
 function getMovies(category, language) {
+
+    switch (category) {
+        case "home":
+            category = "top_rated"
+            break;
+        case "popular":
+            category = "popular"
+            break
+        case "upcoming":
+            category = "upcoming"
+            break
+    }
+
     let url = `https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}&with_original_language=${language}&page=1`
 
     axios.get(url)
