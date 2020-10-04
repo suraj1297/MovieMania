@@ -13,7 +13,7 @@ function getVideo(id, language) {
             if (response.data.results.length) {
                 url = `https://www.youtube.com/embed/${response.data.results[0].key}`
                 localStorage.setItem("url", url)
-                window.open("/video.html")
+                window.open("./video.html")
             } else
                 alert("Soory! No Trailer Available")
         })
