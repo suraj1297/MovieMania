@@ -1,6 +1,10 @@
 //  this function wil loop over the array[object] of movies and will will diplay each movie in ui
 // The element <div class="movie-card"> is created by this function
 
+import {
+    getVideo
+} from "./getVideo.js";
+
 function render(movies) {
 
     /* 
@@ -39,14 +43,14 @@ function render(movies) {
             $img.setAttribute("src", imageUrl)
         }
 
-
+        // If image is not displayed for some reason the name of movie will be displayed
         $img.setAttribute("alt", `${movie.title} Image`)
         $div.appendChild($img)
 
         let $iconDiv = document.createElement("div")
         $iconDiv.classList = "meta"
 
-        // movie votes
+        // movie vote icons
         let $voteCount = document.createElement("p")
         $voteCount.setAttribute("id", "vote-count")
         let $heart = document.createElement("i")
@@ -70,6 +74,8 @@ function render(movies) {
         $iconDiv.appendChild($popularity)
         $div.appendChild($iconDiv)
 
+        // adding event listner to every card so that when user clicks on it trailer can be shown to user
+        $div.addEventListener("click", () => getVideo(movie.id, movie.original_language))
         // adding movie card inside section
         $section.appendChild($div)
     });

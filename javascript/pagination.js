@@ -2,6 +2,8 @@ import {
     getMovies
 } from "./getMovies.js"
 
+
+// this function will create the number of pages icon as per the results
 function pagination(pages, selectedPage) {
     let $pages = document.querySelector(".pagination")
     $pages.innerHTML = ""
@@ -11,12 +13,15 @@ function pagination(pages, selectedPage) {
         $page.appendChild(document.createTextNode(i))
         $pages.appendChild($page)
     }
+    // if pages are availble then only pagination tab will be shown else not
     if (!pages) {
-        document.querySelectorAll(".slider").forEach(element => element.style.display = "none")
+        document.querySelector(".scroll").style.display = "none"
     } else {
-        document.querySelectorAll(".slider").forEach(element => element.style.display = "inline-block")
+        document.querySelector(".scroll").style.display = "flex"
     }
 
+    // once the pages numbers are created adding event listener to it so that when user clicks any page 
+    // then respective results can be shown to user
     addEventlistener()
 }
 
@@ -30,12 +35,14 @@ function addEventlistener() {
         let $clickedPage = e.srcElement;
         $clickedPage.classList = "selected"
 
+        // setting the scroll top
         window.scrollTo({
             top: 0,
             left: 0,
             behavior: 'smooth'
         })
 
+        // fetching movies of requested page number
         getMovies(document.querySelector(".select").innerHTML.toLowerCase(), document.querySelector(".languages").value, $clickedPage.innerHTML)
 
     })

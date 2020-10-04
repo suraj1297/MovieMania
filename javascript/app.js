@@ -2,7 +2,7 @@ import {
     getMovies
 } from "./getMovies.js"
 
-
+// when the page is freshly loaded default screen will be home hich will show top_rated movies.
 getMovies("top_rated", "en")
 
 // this will fetch top-rated/popular/upcoming movies of selected languages as per user
@@ -37,7 +37,7 @@ document.querySelector(".upcoming").addEventListener("click", () => {
 })
 
 
-// scroller
+// scroller will scroll towards left or right as per the icon cliked by user
 document.querySelector(".fa-chevron-right").onclick = () => document.querySelector(".pagination").scrollLeft += 50;
 
 document.querySelector(".fa-chevron-left").onclick = () => document.querySelector(".pagination").scrollLeft -= 50;

@@ -92,11 +92,13 @@ body {
 
 .pagination {
     display: flex;
-    width: 50%;
+    width: max-content;
+    max-width: 500px;
     overflow-x: scroll;
     overflow-y: hidden;
     text-align: center;
     margin: 0 30px;
+    padding-right: 20px;
 }
 
 .pagination p {
@@ -106,6 +108,7 @@ body {
     cursor: pointer;
     color: white;
     font-weight: 700;
+    max-width: 20px;
 }
 
 .pagination p:hover {
@@ -123,6 +126,7 @@ body {
 
 .selected {
     background-color: #2BAE66FF;
+    max-width: 20px;
 }
 
 
