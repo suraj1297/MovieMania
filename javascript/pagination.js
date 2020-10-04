@@ -4,11 +4,17 @@ import {
 
 function pagination(pages, selectedPage) {
     let $pages = document.querySelector(".pagination")
+    $pages.innerHTML = ""
     for (let i = 1; i <= pages; i++) {
         let $page = document.createElement("p")
         $page.classList = i == selectedPage ? `selected` : ""
         $page.appendChild(document.createTextNode(i))
         $pages.appendChild($page)
+    }
+    if (!pages) {
+        document.querySelectorAll(".slider").forEach(element => element.style.display = "none")
+    } else {
+        document.querySelectorAll(".slider").forEach(element => element.style.display = "inline-block")
     }
 
     addEventlistener()
