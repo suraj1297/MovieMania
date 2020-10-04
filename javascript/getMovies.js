@@ -23,6 +23,7 @@ function getMovies(category, language, pageNumber = 1) {
             break
     }
 
+
     let url = `https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}&with_original_language=${language}&page=${pageNumber}`
 
     axios.get(url)
@@ -30,9 +31,14 @@ function getMovies(category, language, pageNumber = 1) {
             if (response.status == 200) {
                 render(response.data.results)
                 pagination(response.data.total_pages, pageNumber)
+                console.log(response.data.total_pages)
+                return response.status
             }
         })
-        .catch(reject => console.log(reject))
+        .catch(reject => {
+            console.log(reject)
+            return RegExp('\\d+').exec(reject)
+        })
 }
 
 export {
