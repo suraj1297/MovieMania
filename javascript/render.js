@@ -25,7 +25,8 @@ function render(movies) {
 
         // movie release date
         let $date = document.createElement("p")
-        $date.appendChild(document.createTextNode(`Released: ${movie.release_date}`))
+        let release = document.querySelector(".category-title").innerHTML.includes("Up") ? "Releasing" : "Released"
+        $date.appendChild(document.createTextNode(`${release}: ${movie.release_date}`))
         $div.appendChild($date)
 
         // movie image
