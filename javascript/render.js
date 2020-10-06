@@ -74,6 +74,7 @@ function render(movies) {
     });
 }
 
+
 export {
     render
 }

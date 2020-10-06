@@ -37,6 +37,7 @@ document.querySelector(".upcoming").addEventListener("click", () => {
 })
 
 
+
 // scroller
 document.querySelector(".fa-chevron-right").onclick = () => document.querySelector(".pagination").scrollLeft += 50;
 
